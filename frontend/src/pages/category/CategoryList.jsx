@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 const CategoryList = () => {
+
+    const navigate = useNavigate()
 
     const [categories, setCategories] = useState([])
 
@@ -17,6 +20,10 @@ const CategoryList = () => {
     return (
         <div>
             <h1>Category List</h1>
+
+            <div>
+                <button onClick={() => navigate('/category/create')}>+ Add Category</button>
+            </div>
 
             <table>
                 <thead>
