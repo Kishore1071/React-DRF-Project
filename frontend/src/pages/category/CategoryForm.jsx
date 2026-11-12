@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import axios from 'axios'
 
 const CategoryForm = () => {
 
@@ -7,6 +8,12 @@ const CategoryForm = () => {
 
     const SubmitForm = () => {
         console.log(category_name, description)
+
+        axios.post('http://127.0.0.1:8000/inv/category/', {
+            category_name, description
+        })
+        .then(response => console.log(response.data))
+        .catch(error => console.log(error))
     }
 
     return (
