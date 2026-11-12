@@ -49,7 +49,11 @@ class CategoryView(APIView):
 
         the_category.delete()
 
-        return Response("Category Deleted")
+        all_categories = Category.objects.all()
+        
+        category_data = CategorySerializer(all_categories, many=True).data
+
+        return Response(category_data)
 
 class ProductView(APIView):
 

@@ -1,12 +1,21 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 const CategoryList = () => {
 
     const navigate = useNavigate()
 
     const [categories, setCategories] = useState([])
+
+    const DeleteCategory = id => {
+        axios.delete(`http://127.0.0.1:8000/inv/category/${id}/`)
+        .then(response => {
+            console.log(response.data)
+            setCategories(response.data)
+        })
+        .catch(error => console.log(error))
+    }
 
     useEffect(() => {
         axios.get('http://127.0.0.1:8000/inv/category/')
@@ -45,7 +54,7 @@ const CategoryList = () => {
                                     <td>{c.description}</td>
                                     <td>
                                         <button>Update</button>
-                                        <button>Delete</button>
+                                        <button onClick={() => DeleteCategory(c.id)}>Delete</button>
                                     </td>
                                 </tr>
                             )

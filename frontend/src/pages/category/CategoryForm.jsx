@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 const CategoryForm = () => {
+
+    const navigate = useNavigate()
 
     const [category_name, setCategoryName] = useState('')
     const [description, setDescription] = useState('')
@@ -12,7 +15,7 @@ const CategoryForm = () => {
         axios.post('http://127.0.0.1:8000/inv/category/', {
             category_name, description
         })
-        .then(response => console.log(response.data))
+        .then(response => navigate('/category'))
         .catch(error => console.log(error))
     }
 
