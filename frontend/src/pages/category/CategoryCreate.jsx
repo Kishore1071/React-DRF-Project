@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import CategoryForm from './CategoryForm'
 
 const CategoryCreate = () => {
 
@@ -12,6 +13,8 @@ const CategoryCreate = () => {
             <div>
                 <button onClick={() => navigate('/category')}>Back</button>
             </div>
+
+            <CategoryForm />
         </div>
     )
 }
