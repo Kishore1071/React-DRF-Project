@@ -53,7 +53,7 @@ const CategoryList = () => {
                                     <td>{c.category_name}</td>
                                     <td>{c.description}</td>
                                     <td>
-                                        <button>Update</button>
+                                        <button onClick={() => navigate(`/category/update/${c.id}/`, { state: c })}>Update</button>
                                         <button onClick={() => DeleteCategory(c.id)}>Delete</button>
                                     </td>
                                 </tr>

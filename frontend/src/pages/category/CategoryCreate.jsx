@@ -14,7 +14,7 @@ const CategoryCreate = () => {
                 <button onClick={() => navigate('/category')}>Back</button>
             </div>
 
-            <CategoryForm />
+            <CategoryForm category_name='' description='' method='create' />
         </div>
     )
 }
