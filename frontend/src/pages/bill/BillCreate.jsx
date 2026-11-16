@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 
 const BillCreate = () => {
 
     const [bill_number, setBillNumebr] = useState('')
+    const [products, setProducts] = useState([])
 
     const [bill_products, setBillProducts] = useState([])
 
@@ -24,6 +26,15 @@ const BillCreate = () => {
         console.log(bill_products)
     }
 
+    useEffect(() => {
+        axios.get('http://127.0.0.1:8000/inv/product/')
+        .then(response => {
+            console.log(response.data)
+            setProducts(response.data)
+        })
+        .catch(error => console.log(error))
+    }, [])
+
     return (
         <div>
             <h1>Create Bill</h1>
@@ -43,7 +54,14 @@ const BillCreate = () => {
                         return (
                             <div>
                                 <label>Product</label>
-                                <input type="text"/>
+                                
+                                <select>
+                                    <option>Select Product</option>
+                                    {
+                                        products.map(product => <option value={product.id} key={product.id}>{product.product_name}</option>)
+                                    }
+                                </select>
+
                                 <label>Quantity</label>
                                 <input type="number"/>
                             </div>
