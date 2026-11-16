@@ -38,9 +38,18 @@ const BillCreate = () => {
 
                 <button type='button' onClick={AddNewProduct}>+ Add Product</button>
 
-                <div>
-                    
-                </div>
+                {
+                    bill_products.map( (p, index) => {
+                        return (
+                            <div>
+                                <label>Product</label>
+                                <input type="text"/>
+                                <label>Quantity</label>
+                                <input type="number"/>
+                            </div>
+                        )
+                    })
+                }
 
 
                 <input type="button" value={'Submit'} onClick={AddBill} />
