@@ -2,9 +2,19 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import Bill, BillProducts
 from inventory.models import Product
+from .serializers import BillSerializer, BillProducts_Serializer, BillWithProducts_Serializer
 
 
 class BillView(APIView):
+
+    def get(sefl, request):
+
+        all_bills = Bill.objects.all()
+
+        bill_data = BillWithProducts_Serializer(all_bills, many=True).data
+
+        return Response(bill_data)
+
 
     def post(self, request):
 

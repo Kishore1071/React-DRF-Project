@@ -10,7 +10,7 @@ class Bill(models.Model):
 
 class BillProducts(models.Model):
 
-    bill = models.ForeignKey(Bill, on_delete=models.CASCADE)
+    bill = models.ForeignKey(Bill, related_name="bill_products", on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
     quantity = models.FloatField(default=0)
     amount = models.FloatField(default=0)
