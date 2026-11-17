@@ -21,9 +21,28 @@ const BillCreate = () => {
         setBillProducts(bill_products_copy)
     }
 
+    const UpdateField = (event, index, field) => {
+
+        const bill_products_copy = [...bill_products]
+
+        if (field === 'product') {
+            bill_products_copy[index].product_id = event.target.value
+        }
+
+        else if (field === 'quantity') {
+            bill_products_copy[index].quantity = event.target.value
+        }
+
+        setBillProducts(bill_products_copy)
+    }
+
     const AddBill = () => {
-        console.log(bill_number)
-        console.log(bill_products)
+        const bill_data = [
+            {bill_number},
+            bill_products
+        ]
+
+        console.log(bill_data)
     }
 
     useEffect(() => {
@@ -52,10 +71,10 @@ const BillCreate = () => {
                 {
                     bill_products.map( (p, index) => {
                         return (
-                            <div>
+                            <div key={index}>
                                 <label>Product</label>
                                 
-                                <select>
+                                <select value={p.product_id} onChange={event => UpdateField(event, index, 'product')}>
                                     <option>Select Product</option>
                                     {
                                         products.map(product => <option value={product.id} key={product.id}>{product.product_name}</option>)
@@ -63,7 +82,7 @@ const BillCreate = () => {
                                 </select>
 
                                 <label>Quantity</label>
-                                <input type="number"/>
+                                <input type="number" value={p.quantity} onChange={event => UpdateField(event, index, 'quantity')}/>
                             </div>
                         )
                     })
