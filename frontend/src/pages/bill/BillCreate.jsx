@@ -42,7 +42,9 @@ const BillCreate = () => {
             bill_products
         ]
 
-        console.log(bill_data)
+        axios.post("http://127.0.0.1:8000/order/bill/", bill_data)
+        .then(response => console.log(response.data))
+        .catch(error => console.log(error))
     }
 
     useEffect(() => {
