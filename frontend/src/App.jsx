@@ -6,6 +6,7 @@ import CategoryUpdate from './pages/category/CategoryUpdate'
 
 import BillList from './pages/bill/BillList'
 import BillCreate from './pages/bill/BillCreate'
+import BillView from './pages/bill/BillView'
 
 const App = () => {
     return (
@@ -18,6 +19,7 @@ const App = () => {
 
                 <Route path='/bill' element={<BillList />} />
                 <Route path='/bill/create' element={<BillCreate />} />
+                <Route path='/bill/:id' element={<BillView />} />
             </Routes>
         </div>
     )
