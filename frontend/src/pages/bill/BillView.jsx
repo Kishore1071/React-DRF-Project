@@ -1,7 +1,9 @@
 import React from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 const BillView = () => {
+
+    const navigate = useNavigate()
 
     const location = useLocation()
 
@@ -11,7 +13,7 @@ const BillView = () => {
         <div>
             <h1>Bill View</h1>
 
-            <button>Back</button>
+            <button onClick={() => navigate('/bill')}>Back</button>
 
             <table>
                 <thead>

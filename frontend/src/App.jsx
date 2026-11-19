@@ -1,5 +1,10 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
+
+import Navbar from './components/Navbar'
+import Login from './pages/auth/Login'
+
+
 import CategoryList from './pages/category/CategoryList'
 import CategoryCreate from './pages/category/CategoryCreate'
 import CategoryUpdate from './pages/category/CategoryUpdate'
@@ -11,7 +16,13 @@ import BillView from './pages/bill/BillView'
 const App = () => {
     return (
         <div>
+
+            <Navbar />
+
             <Routes>
+
+                <Route path='/' element={<Login />} />
+
                 <Route path='/category' element={<CategoryList />} />
                 <Route path='/category/create' element={<CategoryCreate />} />
                 <Route path='/category/update/:id' element={<CategoryUpdate />} />

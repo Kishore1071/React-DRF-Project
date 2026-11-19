@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 const BillCreate = () => {
+
+    const navigate = useNavigate()
 
     const [bill_number, setBillNumebr] = useState('')
     const [products, setProducts] = useState([])
@@ -43,7 +46,10 @@ const BillCreate = () => {
         ]
 
         axios.post("http://127.0.0.1:8000/order/bill/", bill_data)
-        .then(response => console.log(response.data))
+        .then(response => {
+            console.log(response.data)
+            navigate('/bill')
+        })
         .catch(error => console.log(error))
     }
 
@@ -60,7 +66,7 @@ const BillCreate = () => {
         <div>
             <h1>Create Bill</h1>
 
-            <button>Back</button>
+            <button onClick={() => navigate('/bill')}>Back</button>
 
             <form>
                 <div>
