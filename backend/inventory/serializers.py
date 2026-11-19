@@ -8,6 +8,13 @@ class CategorySerializer(ModelSerializer):
         model = Category
         fields = '__all__'
 
+class ProductSerializers(ModelSerializer):
+
+    class Meta:
+
+        model = Product
+        fields = '__all__'
+
 
 class ProductStockSerializer(ModelSerializer):
 

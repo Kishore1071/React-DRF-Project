@@ -19,7 +19,9 @@ const BillView = () => {
                         <th>S.no</th>
                         <th>Product</th>
                         <th>Quantity</th>
+                        <th>Price/Item</th>
                         <th>Amount</th>
+                        <th>Gst %</th>
                         <th>Gst Amount</th>
                         <th>Sub Total</th>
                     </tr>
@@ -29,11 +31,13 @@ const BillView = () => {
                     {
                         bill_data.bill_products.map((p, index) => {
                             return (
-                                <tr>
+                                <tr key={p.id}>
                                     <td>{index + 1}</td>
-                                    <td>{p.product}</td>
+                                    <td>{p.product.product_name}</td>
                                     <td>{p.quantity}</td>
+                                    <td>{p.product.price}</td>
                                     <td>{p.amount}</td>
+                                    <td>{p.product.gst}</td>
                                     <td>{p.gst_amount}</td>
                                     <td>{p.subtotal}</td>
                                 </tr>

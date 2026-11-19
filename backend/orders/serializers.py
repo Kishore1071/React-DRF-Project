@@ -1,5 +1,6 @@
 from rest_framework.serializers import ModelSerializer
 from .models import Bill, BillProducts
+from inventory.serializers import ProductSerializers
 
 
 class BillSerializer(ModelSerializer):
@@ -11,6 +12,8 @@ class BillSerializer(ModelSerializer):
 
 
 class BillProducts_Serializer(ModelSerializer):
+
+    product = ProductSerializers()
 
     class Meta:
 
