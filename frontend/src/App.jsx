@@ -1,5 +1,5 @@
 import React from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
 
 import Navbar from './components/Navbar'
 import Login from './pages/auth/Login'
@@ -14,10 +14,19 @@ import BillCreate from './pages/bill/BillCreate'
 import BillView from './pages/bill/BillView'
 
 const App = () => {
+
+    const location = useLocation()
+
+    console.log(location)
+
+    const menu = location.pathname !== '/' ? true : false
+
     return (
         <div>
 
-            <Navbar />
+            {
+                menu && <Navbar />
+            }
 
             <Routes>
 
