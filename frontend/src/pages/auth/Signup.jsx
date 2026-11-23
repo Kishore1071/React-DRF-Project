@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import axios from 'axios'
 
 const Signup = () => {
 
@@ -6,6 +7,16 @@ const Signup = () => {
     const [password, setPassword] = useState('')
     const [phone_number, setPhoneNumber] = useState('')
     const [role, setRole] = useState('')
+
+    const SubmitForm = (event) => {
+        event.preventDefault()
+
+        axios.post('http://127.0.0.1:8000/auth/signup/', {
+            username, password, phone_number, role
+        })
+        .then(response => console.log(response.data))
+        .catch(error => console.log(error))
+    }
 
     return (
         <div>
@@ -23,7 +34,7 @@ const Signup = () => {
 
                 <div>
                     <label>Phone Number</label>
-                    <input type="number" value={phone_number} onChange={event => setPassword(event.target.value)} />
+                    <input type="number" value={phone_number} onChange={event => setPhoneNumber(event.target.value)} />
                 </div>
 
                 <div>
@@ -37,7 +48,7 @@ const Signup = () => {
                     </select>
                 </div>
 
-
+                <input type="submit" onClick={SubmitForm} />
             </form>
         </div>
     )
