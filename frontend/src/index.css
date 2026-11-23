@@ -13,3 +13,7 @@ th, td {
 td > button {
     margin: 0 5px;
 }
+
+div {
+    margin: 10px;
+}

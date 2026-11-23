@@ -3,6 +3,7 @@ import { Routes, Route, useLocation } from 'react-router-dom'
 
 import Navbar from './components/Navbar'
 import Login from './pages/auth/Login'
+import Signup from './pages/auth/Signup'
 
 
 import CategoryList from './pages/category/CategoryList'
@@ -31,6 +32,7 @@ const App = () => {
             <Routes>
 
                 <Route path='/' element={<Login />} />
+                <Route path='/signup' element={<Signup />} />
 
                 <Route path='/category' element={<CategoryList />} />
                 <Route path='/category/create' element={<CategoryCreate />} />
