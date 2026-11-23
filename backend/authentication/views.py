@@ -1,6 +1,12 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import User
+from rest_framework_simplejwt.views import TokenObtainPairView
+from .serializers import LoginSerializer
+
+class LoginView(TokenObtainPairView):
+
+    serializer_class = LoginSerializer
 
 
 class SignUpView(APIView):
