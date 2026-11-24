@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import axios from 'axios'
+import api from '../../api/axiosInstance'
 import { useNavigate } from 'react-router-dom'
 
 const CategoryForm = (props) => {
@@ -14,14 +14,14 @@ const CategoryForm = (props) => {
 
         if (props.method === 'create') {
     
-            axios.post('http://127.0.0.1:8000/inv/category/', {
+            api.post('/inv/category/', {
                 category_name, description
             })
             .then(response => navigate('/category'))
             .catch(error => console.log(error))
         }
         else if (props.method === 'update') {
-            axios.put(`http://127.0.0.1:8000/inv/category/${props.id}/`, {
+            api.put(`/inv/category/${props.id}/`, {
                 category_name, description
             })
             .then(response => navigate('/category'))

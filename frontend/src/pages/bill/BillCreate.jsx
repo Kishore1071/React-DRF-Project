@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import api from '../../api/axiosInstance'
 import { useNavigate } from 'react-router-dom'
 
 const BillCreate = () => {
@@ -45,7 +45,7 @@ const BillCreate = () => {
             bill_products
         ]
 
-        axios.post("http://127.0.0.1:8000/order/bill/", bill_data)
+        api.post("/order/bill/", bill_data)
         .then(response => {
             console.log(response.data)
             navigate('/bill')
@@ -54,7 +54,7 @@ const BillCreate = () => {
     }
 
     useEffect(() => {
-        axios.get('http://127.0.0.1:8000/inv/product/')
+        api.get('/inv/product/')
         .then(response => {
             console.log(response.data)
             setProducts(response.data)

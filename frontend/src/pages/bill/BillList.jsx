@@ -1,4 +1,4 @@
-import axios from 'axios'
+import api from '../../api/axiosInstance'
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -9,7 +9,7 @@ const BillList = () => {
     const [bills, setBills] = useState([])
 
     useEffect(() => {
-        axios.get('http://127.0.0.1:8000/order/bill/')
+        api.get('/order/bill/')
         .then(response => {
             console.log(response.data)
             setBills(response.data)

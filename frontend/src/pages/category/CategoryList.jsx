@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
+import api from '../../api/axiosInstance'
 
 const CategoryList = () => {
 
@@ -9,7 +9,7 @@ const CategoryList = () => {
     const [categories, setCategories] = useState([])
 
     const DeleteCategory = id => {
-        axios.delete(`http://127.0.0.1:8000/inv/category/${id}/`)
+        api.delete(`/inv/category/${id}/`)
         .then(response => {
             console.log(response.data)
             setCategories(response.data)
@@ -18,7 +18,7 @@ const CategoryList = () => {
     }
 
     useEffect(() => {
-        axios.get('http://127.0.0.1:8000/inv/category/')
+        api.get('/inv/category/')
         .then(response => {
             console.log(response.data)
             setCategories(response.data)
