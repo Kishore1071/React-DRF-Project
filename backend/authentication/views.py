@@ -1,12 +1,16 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import User
-from rest_framework_simplejwt.views import TokenObtainPairView
-from .serializers import LoginSerializer
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from .serializers import LoginSerializer, CustomTokenRefreshSerializer
 
 class LoginView(TokenObtainPairView):
 
     serializer_class = LoginSerializer
+
+class CustomTokenRefreshView(TokenRefreshView):
+
+    serializer_class = CustomTokenRefreshSerializer
 
 
 class SignUpView(APIView):

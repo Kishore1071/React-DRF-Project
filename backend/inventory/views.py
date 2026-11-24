@@ -2,8 +2,11 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import Product, Category
 from .serializers import CategorySerializer, ProductStockSerializer
+from rest_framework.permissions import IsAuthenticated
 
 class CategoryView(APIView):
+
+    permission_classes = [IsAuthenticated]
 
     def get(self, request):
 
