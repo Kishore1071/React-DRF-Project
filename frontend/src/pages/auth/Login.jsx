@@ -1,8 +1,11 @@
 import React, { lazy } from 'react'
 import { useState } from 'react'
 import api from '../../api/axiosInstance.js'
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
+
+    const navigate = useNavigate()
 
     const[username,setUsername] = useState('')
     const[password,setPassword] = useState('')
@@ -20,6 +23,8 @@ const Login = () => {
             localStorage.setItem('refreshToken', response.data.refresh)
             localStorage.setItem('role', response.data.user_role)
             localStorage.setItem('username', response.data.username)
+            navigate('/category')
+
         })
         .catch(error => console.log(error))
     }
