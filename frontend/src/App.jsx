@@ -4,6 +4,8 @@ import { Routes, Route, useLocation } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Login from './pages/auth/Login'
 import Signup from './pages/auth/Signup'
+import ProtectedRoute from './components/ProtectedRoutes'
+import NotFound from './components/NotFound'
 
 
 import CategoryList from './pages/category/CategoryList'
@@ -31,6 +33,8 @@ const App = () => {
 
             <Routes>
 
+                <Route path='*' element={<NotFound />} />
+
                 <Route path='/' element={<Login />} />
                 <Route path='/signup' element={<Signup />} />
 
@@ -39,9 +43,21 @@ const App = () => {
                 <Route path='/category/update/:id' element={<CategoryUpdate />} />
 
 
-                <Route path='/bill' element={<BillList />} />
-                <Route path='/bill/create' element={<BillCreate />} />
-                <Route path='/bill/:id' element={<BillView />} />
+                <Route path='/bill' element={
+                    <ProtectedRoute allowedRoles={['admin', 'manager']}>
+                        <BillList />
+                    </ProtectedRoute>
+                    } />
+                <Route path='/bill/create' element={
+                    <ProtectedRoute allowedRoles={['admin', 'manager']}>
+                        <BillCreate />
+                    </ProtectedRoute>
+                    } />
+                <Route path='/bill/:id' element={
+                    <ProtectedRoute allowedRoles={['admin', 'manager']}>
+                        <BillView />
+                    </ProtectedRoute>
+                    } />
             </Routes>
         </div>
     )

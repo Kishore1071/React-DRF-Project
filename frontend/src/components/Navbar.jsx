@@ -15,16 +15,19 @@ const Navbar = () => {
                 <li>
                     <NavLink to='/category'>Category</NavLink>
                 </li>
-                <li>
-                    <NavLink to='/bill'>Bills</NavLink>
-                </li>
+
+                {
+                    (user_role === 'admin' || user_role === 'manager') && <li>
+                        <NavLink to='/bill'>Bills</NavLink>
+                    </li>
+                }
+                
 
                 {
                     user_role === "admin" && <li>
                         <NavLink to='/signup'>Create User</NavLink>
                     </li>
                 }
-
 
                 <li>
                     <NavLink to='/' onClick={LogoutUser}>Logout</NavLink>
